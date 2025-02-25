@@ -1,8 +1,19 @@
+import pyowm
 import telebot
 from task import gen_pass
-token = 'token'
+from task1 import weatherdef
+token = ''
 bot = telebot.TeleBot(token)
-
+@bot.message_handler(commands=['help'])
+def send_welcome(message):
+    bot.reply_to(message, "все команды:/weather /help /start /hello /bye /image /pass 'число' /heh 'число' ")
+    
+@bot.message_handler(commands=['weather'])
+def send_welcome(message):
+    bot.reply_to(message, weatherdef())
+    
+    
+    
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     bot.reply_to(message, "Привет! Я твой Telegram бот. Напиши что-нибудь!")
@@ -40,3 +51,4 @@ def echo_all(message):
 
 print('botstart')
 bot.polling()
+
